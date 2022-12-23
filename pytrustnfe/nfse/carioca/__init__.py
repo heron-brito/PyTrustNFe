@@ -29,7 +29,7 @@ def _send(certificado, method, **kwargs):
     if kwargs["ambiente"] == "producao":
         base_url = "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl"
     else:
-        base_url = "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl"  # noqa
+        base_url = "https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl" # noqa
 
     xml_send = kwargs["xml"].decode("utf-8")
     cert, key = extract_cert_and_key_from_pfx(certificado.pfx, certificado.password)
