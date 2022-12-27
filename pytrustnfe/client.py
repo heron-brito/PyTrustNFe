@@ -10,8 +10,16 @@ import suds_requests
 def get_authenticated_client(base_url, cert, key):
     cache_location = "/tmp/suds"
     cache = suds.cache.DocumentCache(location=cache_location)
+    print('cache')
+    # print(cache)
+
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger('suds.client').setLevel(logging.DEBUG)
 
     session = requests.Session()
+    print('session')
+    # print(session)
     session.cert = (cert, key)
     return suds.client.Client(
         base_url, cache=cache, transport=suds_requests.RequestsTransport(session)
