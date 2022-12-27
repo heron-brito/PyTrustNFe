@@ -18,10 +18,15 @@ def get_authenticated_client(base_url, cert, key):
     logging.getLogger('suds.client').setLevel(logging.DEBUG)
 
     session = requests.Session()
-    print('session')
-    # print(session)
-    session.cert = (cert, key)
-    return suds.client.Client(
+    session.cert = (cert, key)  
+
+    # Testa sessao https
+    r = requests.get(base_url, cert=(cert, key))
+    if r.status_code == 403:
+        print("ERROR: Falha na conexão utilizando o certificado digital e senha infomados. Verifique a validade do certificado")
+        exit()
+
+return suds.client.Client(
         base_url, cache=cache, transport=suds_requests.RequestsTransport(session)
     )
 
