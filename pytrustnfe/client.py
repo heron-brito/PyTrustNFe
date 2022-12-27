@@ -10,6 +10,12 @@ import suds_requests
 def get_authenticated_client(base_url, cert, key):
     cache_location = "/tmp/suds"
     cache = suds.cache.DocumentCache(location=cache_location)
+    print('cache')
+    # print(cache)
+
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger('suds.client').setLevel(logging.DEBUG)
 
     session = requests.Session()
     session.cert = (cert, key)  
@@ -19,7 +25,8 @@ def get_authenticated_client(base_url, cert, key):
     if r.status_code == 403:
         print("ERROR: Falha na conexão utilizando o certificado digital e senha infomados. Verifique a validade do certificado")
         exit()
-    return suds.client.Client(
+
+return suds.client.Client(
         base_url, cache=cache, transport=suds_requests.RequestsTransport(session)
     )
 
