@@ -16,14 +16,14 @@ from .assinatura import Assinatura
 
 def _render(certificado, method, **kwargs):
     path = os.path.join(os.path.dirname(__file__), "templates")
-    print('render')
-    print(kwargs)
-    print('\nrender fim\n')
+    logger.warning('render')
+    logger.warning(kwargs)
+    logger.warning('\nrender fim\n')
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
-    print('xml_send')
-    print(xml_send)
-    print('xml_send fim')
+    logger.warning('xml_send')
+    logger.warning(xml_send)
+    logger.warning('xml_send fim')
 
     reference = ""
     if method == "GerarNfse":
@@ -36,9 +36,9 @@ def _render(certificado, method, **kwargs):
     # xml_send = signer.assina_xml(xml_send)
     xml_send = etree.fromstring(xml_send)
     xml_send = signer.assina_xml(xml_send)
-    print('xml_send assinador')
-    print(xml_send)
-    print('xml_send assinado fim\n')
+    logger.warning('xml_send assinador')
+    logger.warning(xml_send)
+    logger.warning('xml_send assinado fim\n')
     # return xml_send.encode("utf-8")
     return xml_send
 
@@ -46,23 +46,23 @@ def sign_tag(certificado, **kwargs):
     pkcs12 = crypto.load_pkcs12(certificado.pfx, certificado.password)
     key = pkcs12.get_privatekey()
     if "rps" in kwargs:
-        print('assinando item')
+        logger.warning('assinando item')
         time.sleep(2)
-        print(kwargs)
-        # print(item.__dict__)
-        print(kwargs["rps"]["assinatura"])
+        logger.warning(kwargs)
+        # logger.warning(item.__dict__)
+        logger.warning(kwargs["rps"]["assinatura"])
         signed = crypto.sign(key, kwargs["rps"]["assinatura"], "SHA1")
-        print(signed)
+        logger.warning(signed)
         kwargs["rps"]["assinatura"] = b64encode(signed).decode()
-        print(kwargs["rps"]["assinatura"])
+        logger.warning(kwargs["rps"]["assinatura"])
         # for item in kwargs["rps"]:
-        #     print('assinando item')
+        #     logger.warning('assinando item')
         #     time.sleep(5)
-        #     print(item)
-        #     # print(item.__dict__)
+        #     logger.warning(item)
+        #     # logger.warning(item.__dict__)
         #     signed = crypto.sign(key, item["assinatura"], "SHA1")
         #     item["assinatura"] = b64encode(signed).decode()
-            # print(item["assinatura"])
+            # logger.warning(item["assinatura"])
     # if "cancelamento" in kwargs:
     #     signed = crypto.sign(key, kwargs["cancelamento"]["assinatura"], "SHA1")
     #     kwargs["cancelamento"]["assinatura"] = b64encode(signed).decode()
@@ -79,16 +79,16 @@ def _send(certificado, method, **kwargs):
         # sign_tag(certificado, **kwargs)
 
     xml_send = kwargs["xml"].decode("utf-8")
-    print('xml_send')
-    print(xml_send)
+    logger.warning('xml_send')
+    logger.warning(xml_send)
     cert, key = extract_cert_and_key_from_pfx(certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
-    print(f'cert:{cert} key:{key}')
+    logger.warning(f'cert:{cert} key:{key}')
     client = get_authenticated_client(base_url, cert, key)
-    print('client')
-    print(client)
-    print('client.service')
-    print(client.service, method)
+    logger.warning('client')
+    logger.warning(client)
+    logger.warning('client.service')
+    logger.warning(client.service, method)
 
     try:
         response = getattr(client.service, method)(xml_send)
@@ -100,8 +100,8 @@ def _send(certificado, method, **kwargs):
             "object": None,
         }
 
-    print('response')
-    print(response)
+    logger.warning('response')
+    logger.warning(response)
     response, obj = sanitize_response(response)
     return {"sent_xml": str(xml_send), "received_xml": str(response), "object": obj}
 
@@ -111,10 +111,10 @@ def xml_gerar_nfse(certificado, **kwargs):
 
 
 def gerar_nfse(certificado, **kwargs):
-    print(kwargs)
+    logger.warning(kwargs)
     if "xml" not in kwargs:
         kwargs["xml"] = xml_gerar_nfse(certificado, **kwargs)
-        print(kwargs)
+        logger.warning(kwargs)
     return _send(certificado, "GerarNfse", **kwargs)
 
 
