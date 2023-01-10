@@ -13,6 +13,9 @@ from base64 import b64encode
 # from pytrustnfe.nfe.assinatura import Assinatura
 from .assinatura import Assinatura
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 def _render(certificado, method, **kwargs):
     path = os.path.join(os.path.dirname(__file__), "templates")
