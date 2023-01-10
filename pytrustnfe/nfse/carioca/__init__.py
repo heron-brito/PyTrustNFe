@@ -19,7 +19,8 @@ def _render(certificado, method, **kwargs):
     print('render')
     print(kwargs)
     print('\nrender fim\n')
-    xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
+    # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
+    xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
     print('xml_send')
     print(xml_send)
     print('xml_send fim')
@@ -32,11 +33,14 @@ def _render(certificado, method, **kwargs):
 
     signer = Assinatura(certificado.pfx, certificado.password)
     # xml_send = signer.assina_xml(xml_send, reference)
-    xml_send = signer.assina_xml(xml_send )
+    # xml_send = signer.assina_xml(xml_send)
+    xml_send = etree.fromstring(xml_send)
+    xml_send = signer.assina_xml(xml_send)
     print('xml_send assinador')
     print(xml_send)
     print('xml_send assinado fim\n')
-    return xml_send.encode("utf-8")
+    # return xml_send.encode("utf-8")
+    return xml_send
 
 def sign_tag(certificado, **kwargs):
     pkcs12 = crypto.load_pkcs12(certificado.pfx, certificado.password)
