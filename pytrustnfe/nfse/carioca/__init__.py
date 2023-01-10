@@ -84,7 +84,7 @@ def _send(certificado, method, **kwargs):
 
     # xml_send = kwargs["xml"].decode("utf-8")
     logger.warning('_send xml_send')
-    logger.warning(xml_send)
+    # logger.warning(xml_send)
     cert, key = extract_cert_and_key_from_pfx(certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
     logger.warning(f'cert:{cert} key:{key}')
