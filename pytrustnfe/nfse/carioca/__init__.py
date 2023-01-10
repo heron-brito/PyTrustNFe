@@ -11,6 +11,7 @@ from pytrustnfe.xml import render_xml, sanitize_response
 from base64 import b64encode
 
 # from pytrustnfe.nfe.assinatura import Assinatura
+from lxml import etree
 from .assinatura import Assinatura
 
 import logging
