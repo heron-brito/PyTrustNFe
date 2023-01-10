@@ -25,9 +25,9 @@ def _render(certificado, method, **kwargs):
     logger.warning('\nrender fim\n')
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
-    logger.warning('xml_send')
+    logger.warning('_render xml_send')
     logger.warning(xml_send)
-    logger.warning('xml_send fim')
+    logger.warning('_render xml_send fim')
 
     reference = ""
     if method == "GerarNfse":
@@ -82,8 +82,8 @@ def _send(certificado, method, **kwargs):
     # if ( method == "GerarNfse" ):
         # sign_tag(certificado, **kwargs)
 
-    xml_send = kwargs["xml"].decode("utf-8")
-    logger.warning('xml_send')
+    # xml_send = kwargs["xml"].decode("utf-8")
+    logger.warning('_send xml_send')
     logger.warning(xml_send)
     cert, key = extract_cert_and_key_from_pfx(certificado.pfx, certificado.password)
     cert, key = save_cert_key(cert, key)
