@@ -43,6 +43,8 @@ def _render(certificado, method, **kwargs):
     logger.warning('xml_send assinador')
     logger.warning(xml_send)
     logger.warning('xml_send assinado fim\n')
+    logger.warning('kwargs["rps"]')
+    logger.warning(kwargs["rps"])
     # return xml_send.encode("utf-8")
     return xml_send
 

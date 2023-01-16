@@ -14,7 +14,8 @@
         <RpsSubstituido>
             <Numero>{{ rps.numero_substituido }}</Numero>
             <Serie>{{ rps.serie_substituido }}</Serie>
-            <Tipo>{{ rps.tipo_substituido }}</Tipo>
+            {% comment %} <Tipo>{{ rps.tipo_substituido }}</Tipo> {% endcomment %}
+            <Tipo>1</Tipo>
         </RpsSubstituido>
         <Servico>
             <Valores>
