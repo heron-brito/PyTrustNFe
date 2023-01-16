@@ -3,7 +3,7 @@
         <IdentificacaoRps>
             <Numero>{{ rps.numero }}</Numero>
             <Serie>{{ rps.serie }}</Serie>
-            <Tipo>{{ rps.tipo_rps }}</Tipo>
+            <Tipo>1</Tipo>
         </IdentificacaoRps>
         <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
         <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
@@ -14,7 +14,7 @@
         <RpsSubstituido>
             <Numero>{{ rps.numero_substituido }}</Numero>
             <Serie>{{ rps.serie_substituido }}</Serie>
-            <Tipo>1</Tipo>
+            <Tipo>{{ rps.tipo_substituido }}</Tipo>
         </RpsSubstituido>
         <Servico>
             <Valores>
