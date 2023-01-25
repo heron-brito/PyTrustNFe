@@ -61,6 +61,7 @@ later (LGPLv2+)",
         'reportlab',
         'pytz',
         'zeep',
+        'signxml',
     ],
     tests_require=[
         'pytest',
