@@ -14,6 +14,8 @@ class Assinatura(_Assinatura):
 
     def assina_xml(self, xml_element):
         logger.warning('assina_xml')
+        print('assina_xml')
+        
         
         cert, key = extract_cert_and_key_from_pfx(self.arquivo, self.senha)
 
