@@ -15,7 +15,7 @@ class Certificado(object):
         self.pfx = pfx
         self.password = password
 
-        pfx = crypto.load_pkcs12(pfx, password).get_certificate()
+        pfx = crypto.load_pkcs12(pfx, password.encode('utf-8')).get_certificate()
         cert_date =  int(str(pfx.get_notAfter(),'UTF-8').strip('Z'))
         now  = datetime.now()
         date = int(now.strftime("%Y%m%d%H%M%S"))
@@ -32,7 +32,7 @@ class Certificado(object):
 
 def extract_cert_and_key_from_pfx(pfx, password):
     try:
-        pfx = crypto.load_pkcs12(pfx, password)
+        pfx = crypto.load_pkcs12(pfx, password.encode('utf-8'))
     except:
         print("ERROR: Falha ao ler certiticado. Verifique a senha")
         exit()
