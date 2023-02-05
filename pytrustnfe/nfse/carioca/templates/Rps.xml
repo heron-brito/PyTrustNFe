@@ -7,7 +7,6 @@
         </IdentificacaoRps>
         <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
         <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
-        <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
         <Status>{{ rps.status }}</Status>
