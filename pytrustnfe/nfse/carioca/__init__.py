@@ -117,7 +117,7 @@ def _send(certificado, method, **kwargs):
     logger.warning('response')
     logger.warning(response)
     logger.warn('client.last_sent()')
-    client.last_sent()
+    print(client.last_sent())
     response, obj = sanitize_response(response)
     return {"sent_xml": str(xml_send), "received_xml": str(response), "object": obj}
 
