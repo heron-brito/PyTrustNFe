@@ -5,9 +5,6 @@
             <Serie>{{ rps.serie }}</Serie>
             <Tipo>{{ rps.tipo_rps }}</Tipo>
         </IdentificacaoRps>
-            <Numero>{{ rps.numero }}</Numero>
-            <Serie>{{ rps.serie }}</Serie>
-            <Tipo>{{ rps.tipo_rps }}</Tipo>
         <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
         <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
         <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
