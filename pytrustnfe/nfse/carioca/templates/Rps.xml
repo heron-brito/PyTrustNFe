@@ -7,15 +7,9 @@
         </IdentificacaoRps>
         <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
         <NaturezaOperacao>{{ rps.natureza_operacao }}</NaturezaOperacao>
-        <RegimeEspecialTributacao>{{ rps.regime_tributacao }}</RegimeEspecialTributacao>
         <OptanteSimplesNacional>{{ rps.optante_simples }}</OptanteSimplesNacional>
         <IncentivadorCultural>{{ rps.incentivador_cultural }}</IncentivadorCultural>
         <Status>{{ rps.status }}</Status>
-        <RpsSubstituido>
-            <Numero>{{ rps.numero_substituido }}</Numero>
-            <Serie>{{ rps.serie_substituido }}</Serie>
-            <Tipo>{{ rps.tipo_substituido }}</Tipo>
-        </RpsSubstituido>
         <Servico>
             <Valores>
                 <ValorServicos>{{ rps.valor_servico }}</ValorServicos>
