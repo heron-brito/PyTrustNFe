@@ -40,12 +40,12 @@ def _render(certificado, method, **kwargs):
     elif method == "CancelarNfse":
         reference = "Cancelamento_NF%s" % kwargs["cancelamento"]["numero_nfse"]
 
+    logger.warning('xml_send assinador')
     signer = Assinatura(certificado.pfx, certificado.password)
     # xml_send = signer.assina_xml(xml_send, reference)
     # xml_send = signer.assina_xml(xml_send)
     xml_send = etree.fromstring(xml_send)
     xml_send = signer.assina_xml(xml_send)
-    logger.warning('xml_send assinador')
     logger.warning(xml_send)
     logger.warning('xml_send assinado fim\n')
     logger.warning('kwargs["rps"]')
