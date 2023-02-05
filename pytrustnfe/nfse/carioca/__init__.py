@@ -29,7 +29,7 @@ def _render(certificado, method, **kwargs):
     logger.warning(kwargs)
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
-    logger.warning('\nrender fim\n')
+    logger.warning('render fim')
     logger.warning('_render xml_send')
     logger.warning(xml_send)
     logger.warning('_render xml_send fim')

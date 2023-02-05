@@ -3,10 +3,18 @@ from pytrustnfe.certificado import extract_cert_and_key_from_pfx
 from signxml import XMLSigner, methods
 from pytrustnfe.nfe.assinatura import Assinatura as _Assinatura
 
+import logging
+logger = logging.getLogger(__name__)
+
+# Teste
+# https://stackoverflow.com/questions/4426204/how-can-i-output-what-suds-is-generating-receiving
+logging.basicConfig(level=logging.DEBUG)
 
 class Assinatura(_Assinatura):
 
     def assina_xml(self, xml_element):
+        logger.warning('assina_xml')
+        
         cert, key = extract_cert_and_key_from_pfx(self.arquivo, self.senha)
 
         for element in xml_element.iter("*"):
@@ -20,10 +28,11 @@ class Assinatura(_Assinatura):
             c14n_algorithm=u"http://www.w3.org/TR/2001/REC-xml-c14n-20010315",
         )
 
+        logger.warning('assina_xml signer end')
+
         ns = {}
         ns[None] = signer.namespaces["ds"]
         signer.namespaces = ns
-        print(xml_element)
         element_signed = xml_element.find(".//{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}Rps")
         signed_root = signer.sign(
             xml_element, key=key.encode(), cert=cert.encode()
@@ -35,5 +44,5 @@ class Assinatura(_Assinatura):
         if element_signed is not None and signature is not None:
             parent = xml_element.getchildren()[0]
             parent.append(signature)
-
+        logger.warn(f'xml_element: {xml_element}')
         return etree.tostring(xml_element, encoding=str)
