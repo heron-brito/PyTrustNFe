@@ -27,9 +27,9 @@ def _render(certificado, method, **kwargs):
     path = os.path.join(os.path.dirname(__file__), "templates")
     logger.warning('render')
     logger.warning(kwargs)
-    logger.warning('\nrender fim\n')
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
+    logger.warning('\nrender fim\n')
     logger.warning('_render xml_send')
     logger.warning(xml_send)
     logger.warning('_render xml_send fim')
@@ -121,10 +121,12 @@ def _send(certificado, method, **kwargs):
 
 
 def xml_gerar_nfse(certificado, **kwargs):
+    logger.warning('xml_gerar_nfse')
     return _render(certificado, "GerarNfse", **kwargs)
 
 
 def gerar_nfse(certificado, **kwargs):
+    logger.warning('gerar_nfse')
     logger.warning(kwargs)
     if "xml" not in kwargs:
         kwargs["xml"] = xml_gerar_nfse(certificado, **kwargs)
