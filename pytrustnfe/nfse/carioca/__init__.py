@@ -102,7 +102,7 @@ def _send(certificado, method, **kwargs):
     logger.warning('client')
     logger.warning(client)
     logger.warning('client.service')
-    logger.warning(client.service, method)
+    # logger.warning(client.service, method)
 
     try:
         response = getattr(client.service, method)(xml_send)
