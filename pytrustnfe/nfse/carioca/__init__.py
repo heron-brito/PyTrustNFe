@@ -17,6 +17,11 @@ from .assinatura import Assinatura
 import logging
 logger = logging.getLogger(__name__)
 
+# Teste
+# https://stackoverflow.com/questions/4426204/how-can-i-output-what-suds-is-generating-receiving
+logging.basicConfig(level=logging.DEBUG)
+
+
 
 def _render(certificado, method, **kwargs):
     path = os.path.join(os.path.dirname(__file__), "templates")
@@ -109,6 +114,8 @@ def _send(certificado, method, **kwargs):
 
     logger.warning('response')
     logger.warning(response)
+    logger.warn('client.last_sent()')
+    client.last_sent()
     response, obj = sanitize_response(response)
     return {"sent_xml": str(xml_send), "received_xml": str(response), "object": obj}
 
