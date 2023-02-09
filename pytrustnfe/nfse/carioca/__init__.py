@@ -172,7 +172,7 @@ def _send(certificado, method, **kwargs):
 def xml_gerar_nfse(certificado, **kwargs):
     logger.warning('xml_gerar_nfse')
     # return _render(certificado, "GerarNfse", **kwargs)
-    return _renderOld(certificado, method)(certificado, "GerarNfse", **kwargs)
+    return _renderOld(certificado, "GerarNfse" , **kwargs)
 
 
 def gerar_nfse(certificado, **kwargs):
