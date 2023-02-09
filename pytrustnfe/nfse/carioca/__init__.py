@@ -52,7 +52,6 @@ def _render(certificado, method, **kwargs):
     logger.warning(xml_send.items())
     logger.warning(xml_send.tag)
     logger.warning(xml_send.attrib)
-    logger.warning(xml_send.dump)
     xml_send = signer.assina_xml(xml_send)
     logger.warning('xml_send assinado ')
     logger.warning(xml_send)
