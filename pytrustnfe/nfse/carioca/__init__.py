@@ -101,13 +101,15 @@ def _send(certificado, method, **kwargs):
     client = get_authenticated_client(base_url, cert, key)
     logger.warning('client')
     logger.warning(client)
-    logger.warning('client.service')
-    # logger.warning(client.service, method)
+    logger.warning('client.service, method')
+    logger.warning(client.service, method)
 
     try:
         response = getattr(client.service, method)(xml_send)
         # response = getattr(client.service, method)(1, xml_send)
     except suds.WebFault as e:
+        logger.error(msg)('ERROR: fail to send soap request ')
+        logger.error(e)
         return {
             "sent_xml": str(xml_send),
             "received_xml": str(e.fault.faultstring),
