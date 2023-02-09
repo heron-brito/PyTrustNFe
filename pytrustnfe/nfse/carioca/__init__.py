@@ -41,6 +41,7 @@ def _render(certificado, method, **kwargs):
         reference = "Cancelamento_NF%s" % kwargs["cancelamento"]["numero_nfse"]
 
     logger.warning('xml_send assinador')
+    logger.warning(f'reference {reference} ')
     # logger.warning(certificado.__dict__)
     # logger.warning(f'{certificado.pfx},pass:  {certificado.password}')
     signer = Assinatura(certificado.pfx, certificado.password)
