@@ -37,19 +37,25 @@ class Assinatura(_Assinatura):
         signer.namespaces = ns
         element_signed = xml_element.find(".//{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}Rps")
         # element_signed = xml_element.find("{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}")
-        logger.warning('element_signed')
-        logger.warning(element_signed.text)
         signed_root = signer.sign(
             xml_element, key=key.encode(), cert=cert.encode()
         )
         signature = signed_root.find(
             ".//{http://www.w3.org/2000/09/xmldsig#}Signature"
         )
+        logger.warning('element_signed')
+        logger.warning(element_signed)
+        logger.warning('signature')
+        logger.warning(signature)
+        logger.warning('signed_root')
+        logger.warning(signed_root)
 
         if element_signed is not None and signature is not None:
             parent = xml_element.getchildren()[0]
             logger.warning('parent')
-            logger.warning(parent.text)
+            logger.warning(parent)
             parent.append(signature)
+            logger.warning('parent with  signature')
+            logger.warning(parent)
         logger.warning(f'xml_element: {xml_element}')
         return etree.tostring(xml_element, encoding=str)
