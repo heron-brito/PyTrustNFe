@@ -49,15 +49,15 @@ class Assinatura(_Assinatura):
         logger.warning(signature)
         logger.warning('signed_root')
         logger.warning(signed_root)
-        logger.warning(signed_root.get())
+        logger.warning(signed_root.items())
 
         if element_signed is not None and signature is not None:
             parent = xml_element.getchildren()[0]
             logger.warning('parent')
-            logger.warning(parent.get())
+            logger.warning(parent.items())
             parent.append(signature)
             logger.warning('parent with  signature')
-            logger.warning(parent.get())
+            logger.warning(parent.items())
             logger.warning(parent.text)
         logger.warning(f'xml_element: {xml_element}')
         return etree.tostring(xml_element, encoding=str)
