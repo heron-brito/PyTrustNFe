@@ -51,6 +51,7 @@ class Assinatura(_Assinatura):
         logger.warning(signed_root)
         logger.warning(signed_root.items())
         logger.warning(signed_root.tag)
+        logger.warning(signed_root.text)
 
         if element_signed is not None and signature is not None:
             parent = xml_element.getchildren()[0]
