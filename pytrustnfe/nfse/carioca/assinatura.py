@@ -35,7 +35,9 @@ class Assinatura(_Assinatura):
         ns = {}
         ns[None] = signer.namespaces["ds"]
         signer.namespaces = ns
-        element_signed = xml_element.find(".//{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}Rps")
+        # element_signed = xml_element.find(".//{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}Rps")
+        element_signed = xml_element.find("{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}")
+        logger.warning(element_signed)
         signed_root = signer.sign(
             xml_element, key=key.encode(), cert=cert.encode()
         )
@@ -45,6 +47,7 @@ class Assinatura(_Assinatura):
 
         if element_signed is not None and signature is not None:
             parent = xml_element.getchildren()[0]
+            logger.warning(parent)
             parent.append(signature)
         logger.warning(f'xml_element: {xml_element}')
         return etree.tostring(xml_element, encoding=str)
