@@ -42,7 +42,7 @@ def _render(certificado, method, **kwargs):
 
     logger.warning('xml_send assinador')
     # logger.warning(certificado.__dict__)
-    logger.warning(f'{certificado.pfx},pass:  {certificado.password}')
+    # logger.warning(f'{certificado.pfx},pass:  {certificado.password}')
     signer = Assinatura(certificado.pfx, certificado.password)
     # xml_send = signer.assina_xml(xml_send, reference)
     # xml_send = signer.assina_xml(xml_send)
