@@ -10,9 +10,9 @@ from pytrustnfe.certificado import extract_cert_and_key_from_pfx, save_cert_key
 from pytrustnfe.xml import render_xml, sanitize_response
 from base64 import b64encode
 
-# from pytrustnfe.nfe.assinatura import Assinatura
+from pytrustnfe.nfe.assinatura import Assinatura
 from lxml import etree
-from .assinatura import AssinaturaOld
+from .assinatura import Assinatura
 
 import logging
 logger = logging.getLogger(__name__)
