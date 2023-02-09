@@ -47,6 +47,7 @@ def _renderOld(certificado, method, **kwargs):
     # logger.warning(f'{certificado.pfx},pass:  {certificado.password}')
     signer = Assinatura(certificado.pfx, certificado.password)
     # xml_send = signer.assina_xml(xml_send)
+    return xml_send
     xml_send = etree.fromstring(xml_send)
     logger.warning('xml_send.items()')
     logger.warning(xml_send.items())
