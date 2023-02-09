@@ -26,14 +26,14 @@ logging.basicConfig(level=logging.DEBUG)
 def _renderOld(certificado, method, **kwargs):
     from pytrustnfe.nfe.assinatura import Assinatura
     path = os.path.join(os.path.dirname(__file__), "templates")
-    logger.warning('render')
+    logger.warning('renderOld')
     logger.warning(kwargs)
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
-    logger.warning('render fim')
-    logger.warning('_render xml_send')
+    logger.warning('renderOld fim')
+    logger.warning('_renderOld xml_send')
     logger.warning(xml_send)
-    logger.warning('_render xml_send fim')
+    logger.warning('_renderOld xml_send fim')
 
     reference = ""
     if method == "GerarNfse":
