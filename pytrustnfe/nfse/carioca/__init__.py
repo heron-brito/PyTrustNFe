@@ -147,8 +147,8 @@ def _send(certificado, method, **kwargs):
     client = get_authenticated_client(base_url, cert, key)
     logger.warning('client')
     logger.warning(client)
-    logger.warning('client.service, method')
-    logger.warning(client.service, method)
+    #logger.warning('client.service, method')
+    #logger.warning(client.service, method)
 
     try:
         response = getattr(client.service, method)(xml_send)
