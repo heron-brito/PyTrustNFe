@@ -37,6 +37,7 @@ class Assinatura(_Assinatura):
         signer.namespaces = ns
         element_signed = xml_element.find(".//{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}Rps")
         # element_signed = xml_element.find("{http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd}")
+        # <GerarNfseEnvio xmlns="http://notacarioca.rio.gov.br/WSNacional/XSD/1/nfse_pcrj_v01.xsd">
         signed_root = signer.sign(
             xml_element, key=key.encode(), cert=cert.encode()
         )

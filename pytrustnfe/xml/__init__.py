@@ -31,6 +31,7 @@ def render_xml(path, template_name, remove_empty, **nfe):
     env.filters["comma"] = filters.format_with_comma
     logger.warning(f'env={env} ')
 
+    logger.warning(f'template_name={template_name} ')
     template = env.get_template(template_name)
     logger.warning(f'template={template} ')
     xml = template.render(**nfe).replace("\n", "")
