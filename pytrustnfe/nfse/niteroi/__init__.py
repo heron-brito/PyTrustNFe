@@ -29,6 +29,7 @@ def _renderOld(certificado, method, **kwargs):
     logger.warning('renderOld')
     logger.warning(kwargs)
     # xml_send = render_xml(path, "%s.xml" % method, True, **kwargs)
+    logger.warning(f'template path:{path}, file {method}')
     xml_send = render_xml(path, f"{method}.xml", False, **kwargs)
     logger.warning('renderOld fim')
     logger.warning('_renderOld xml_send')
