@@ -1,8 +1,8 @@
 <Rps>
     <InfRps xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd" Id="r{{ rps.numero }}">
         <IdentificacaoRps>
-            <Numero>{{ rps.numero }}</Numero>
-            <Serie>{{ rps.serie }}</Serie>
+            <Numero>{{ rps.numero  }}</Numero>
+            <Serie>{{ rps.serie  }}</Serie>
             <Tipo>{{ rps.tipo_rps }}</Tipo>
         </IdentificacaoRps>
         <DataEmissao>{{ rps.data_emissao }}</DataEmissao>
