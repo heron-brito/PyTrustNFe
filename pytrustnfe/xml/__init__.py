@@ -8,6 +8,8 @@ from lxml import objectify
 from jinja2 import Environment, FileSystemLoader
 from . import filters
 
+import logging
+logger = logging.getLogger(__name__)
 
 def recursively_empty(e):
     if e.text:
@@ -16,6 +18,7 @@ def recursively_empty(e):
 
 
 def render_xml(path, template_name, remove_empty, **nfe):
+    logger.warning('function render_xml')
     nfe = recursively_normalize(nfe)
     env = Environment(loader=FileSystemLoader(
         path), extensions=["jinja2.ext.with_"])
@@ -27,11 +30,13 @@ def render_xml(path, template_name, remove_empty, **nfe):
     env.filters["comma"] = filters.format_with_comma
 
     template = env.get_template(template_name)
+    logger.warning(f'template={template} ')
     xml = template.render(**nfe).replace("\n", "")
     parser = etree.XMLParser(
         remove_blank_text=True, remove_comments=True, strip_cdata=False
     )
     root = etree.fromstring(xml, parser=parser)
+    logger.warning(f'root={root} ')
     for element in root.iter("*"):  # remove espaços em branco
         if element.text is not None and not element.text.strip():
             element.text = None
