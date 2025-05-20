@@ -20,6 +20,7 @@ def recursively_empty(e):
 def render_xml(path, template_name, remove_empty, **nfe):
     logger.warning('function render_xml')
     nfe = recursively_normalize(nfe)
+    logger.warning(f'nfe={nfe} ')
     env = Environment(loader=FileSystemLoader(
         path), extensions=["jinja2.ext.with_"])
     env.filters["normalize"] = filters.strip_line_feed
@@ -28,6 +29,7 @@ def render_xml(path, template_name, remove_empty, **nfe):
     env.filters["format_datetime"] = filters.format_datetime
     env.filters["format_date"] = filters.format_date
     env.filters["comma"] = filters.format_with_comma
+    logger.warning(f'env={env} ')
 
     template = env.get_template(template_name)
     logger.warning(f'template={template} ')
